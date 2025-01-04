@@ -1,4 +1,4 @@
-module hnsw/go-hnsw
+module github.com/Bariban/go-hnsw
 
 go 1.21.3
 
