@@ -477,9 +477,10 @@ func (h *Hnsw) Add(q Point, id uint32) {
 	}
 
 	h.Lock()
-	// Add it and increase slice length if neccessary
 	if len(h.nodes) < int(newID)+1 {
-		h.nodes = h.nodes[0 : newID+1]
+		newNodes := make([]node, newID+1)
+		copy(newNodes, h.nodes)
+		h.nodes = newNodes
 	}
 	h.nodes[newID] = newNode
 	h.Unlock()
